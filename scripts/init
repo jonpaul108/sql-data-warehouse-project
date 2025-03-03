@@ -1,10 +1,16 @@
 /*
-This script creates the DataWarehouse database.
-Within the database, it creates three schemas: bronze, silver, and gold.
+---------------------------------------------
+Create Database and schemas
+---------------------------------------------
+
+Script Purpose:
+  This script creates the DataWarehouse database and schemas after checking if it already exists.
+  Additionally, if it exists, it is dropped and recreated. 
+  Then, it proceeds to create three schemas: bronze, silver, and gold.
 
 WARNING:
-The following script will drop and recreate the DataWarehouse database.
-Any data in it will be lost.
+  The following script will drop and recreate the DataWarehouse database.
+  Any data in it will be lost.
 */
 
 USE MASTER;
