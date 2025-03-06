@@ -131,3 +131,16 @@ SELECT
     ELSE TRIM(cntry)
   END AS cntry
 FROM bronze.erp_loc_a101;
+
+INSERT INTO silver.erp_px_cat_g1v2(
+  id,
+  cat,
+  subcat,
+  maintenance
+)
+SELECT 
+id,
+cat,
+subcat,
+ TRIM(REPLACE(maintenance,CHAR(13),'')) as maintenance
+ FROM bronze.erp_px_cat_g1v2;
