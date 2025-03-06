@@ -114,3 +114,20 @@ SELECT
     ELSE 'N/A'
   END AS Gen
 FROM bronze.erp_cust_az12;
+
+INSERT INTO silver.erp_loc_a101 (
+  cid,
+  cntry
+)
+SELECT 
+  REPLACE(cid, '-', '') AS cid,
+  CASE WHEN UPPER(TRIM(REPLACE(cntry, CHAR(13), ''))) IN ('US', 'USA', 'UNITED STATES') THEN 'UNITED STATES'
+    WHEN UPPER(TRIM(REPLACE(cntry, CHAR(13), ''))) IN ('DE', 'GERMANY') THEN 'GERMANY'
+    WHEN UPPER(TRIM(REPLACE(cntry, CHAR(13), ''))) IN ('FRANCE', 'FR') THEN 'FRANCE'
+    WHEN UPPER(TRIM(REPLACE(cntry, CHAR(13), ''))) IN ('AUSTRALIA', 'AU') THEN 'AUSTRALIA'
+    WHEN UPPER(TRIM(REPLACE(cntry, CHAR(13), ''))) IN ('CANADA', 'CA') THEN 'CANADA'
+    WHEN UPPER(TRIM(REPLACE(cntry, CHAR(13), ''))) IN ('UK', 'UNITED KINGDOM') THEN 'UNITED KINGDOM'
+    WHEN TRIM(REPLACE(cntry, CHAR(13), '')) = '' OR cntry IS NULL THEN 'N/A'
+    ELSE TRIM(cntry)
+  END AS cntry
+FROM bronze.erp_loc_a101;
