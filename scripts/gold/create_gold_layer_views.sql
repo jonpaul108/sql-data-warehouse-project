@@ -5,7 +5,8 @@ Gold Layer
 ========================================
 */
 
---create the customer dimension view
+-- create the customer dimension view
+
 CREATE VIEW gold.dim_customers AS
 (
   SELECT
@@ -27,3 +28,25 @@ CREATE VIEW gold.dim_customers AS
   LEFT JOIN silver.erp_loc_a101 la
   ON ci.cst_key = la.cid
 )
+
+
+-- create the product dimension view
+  
+CREATE VIEW gold.dim_product AS
+(
+SELECT 
+  ROW_NUMBER() OVER(order by  pi.prd_start_dt, pi.prd_key) AS product_key,
+  pi.prd_id AS product_id,
+  pi.prd_key AS product_number,
+  pi.prd_nm AS product_name,
+  pi.cat_id AS category_id,
+  px.cat AS category,
+  px.subcat AS subcategory,
+  px.maintenance AS maintenance,
+  pi.prd_cost AS product_cost,
+  pi.prd_line AS product_line,
+  pi.prd_start_dt AS start_date
+FROM
+silver.crm_prd_info pi
+LEFT JOIN silver.erp_px_cat_g1v2 px ON pi.cat_id = px.id
+);
