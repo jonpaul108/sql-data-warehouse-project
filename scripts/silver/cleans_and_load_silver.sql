@@ -1,3 +1,6 @@
+PRINT '>> Truncating Table: silver.crm_cust_info';
+TRUNCATE TABLE silver.crm_cust_info;
+PRINT '>> Inserting Data Into Table: silver.crm_cust_info';
 INSERT INTO silver.crm_cust_info (
   cst_id,
   cst_key,
@@ -34,6 +37,10 @@ FROM
 WHERE cst_id IS NOT NULL
 ) t WHERE flag_last = 1;
 
+
+PRINT '>> Truncating Table: silver.crm_prd_info';
+TRUNCATE TABLE silver.crm_prd_info;
+PRINT '>> Inserting Data Into Table: silver.crm_prd_info';
 INSERT INTO silver.crm_prd_info (
    prd_id,
   cat_id,
@@ -62,6 +69,10 @@ SELECT
 FROM
 bronze.crm_prd_info;
 
+
+PRINT '>> Truncating Table: silver.crm_sales_details';
+TRUNCATE TABLE silver.crm_sales_details;
+PRINT '>> Inserting Data Into Table: silver.crm_sales_details';
 INSERT INTO silver.crm_sales_details (
   sls_ord_num,
   sls_prd_key,
@@ -95,7 +106,9 @@ SELECT
 FROM 
 bronze.crm_sales_details;
 
-
+PRINT '>> Truncating Table: silver.erp_cust_az12';
+TRUNCATE TABLE silver.erp_cust_az12;
+PRINT '>> Inserting Data Into Table: silver.erp_cust_az12';
 INSERT INTO silver.erp_cust_az12 (
   CID,
   BDATE,
@@ -115,6 +128,10 @@ SELECT
   END AS Gen
 FROM bronze.erp_cust_az12;
 
+
+PRINT '>> Truncating Table: silver.erp_loc_a101';
+TRUNCATE TABLE silver.erp_loc_a101;
+PRINT '>> Inserting Data Into Table: silver.erp_loc_a101';
 INSERT INTO silver.erp_loc_a101 (
   cid,
   cntry
@@ -132,7 +149,11 @@ SELECT
   END AS cntry
 FROM bronze.erp_loc_a101;
 
-INSERT INTO silver.erp_px_cat_g1v2(
+
+PRINT '>> Truncating Table: silver.erp_px_cat_g1v2';
+TRUNCATE TABLE silver.erp_px_cat_g1v2;
+PRINT '>> Inserting Data Into Table: silver.erp_px_cat_g1v2';
+INSERT INTO silver.erp_px_cat_g1v2 (
   id,
   cat,
   subcat,
