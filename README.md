@@ -1,6 +1,6 @@
 # sql-data-warehouse-project
-Welcome to the **Data Warehouse and Analytics** repository!
-This project was completed to demonstrate knowledge of data analytics and data warehousing.  
+Welcome to the **Data Warehouse for Analytics** repository!
+This project was completed to demonstrate knowledge of data analytics and data warehousing focusing on customer and sales data. 
 ---
 ## Data Architecture
 ![Screenshot 2025-03-14 at 11 25 23 AM](https://github.com/user-attachments/assets/596bda80-b729-447e-9198-52a76b1bc40e)
